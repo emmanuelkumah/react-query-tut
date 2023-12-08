@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Emmanuel Kumah",
+      "location": "Accra, Ghana"
+    },
+    {
+      "id": 2,
+      "name": "Samuel Addo",
+      "location": "Accra, Ghana"
+    },
+    {
+      "id": 3,
+      "name": "Wonderful Ikeche",
+      "location": "Lagos, Nigeria"
+    }
+  ]
+}
