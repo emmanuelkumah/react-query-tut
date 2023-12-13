@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import App from "./App.jsx";
 import "./index.css";
 
 import Root from "./routes/root.jsx";
@@ -10,6 +9,7 @@ import RQFetch from "./components/RQFetch.jsx";
 import Home from "../src/components/Home.jsx";
 
 import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevTools } from "react-query/devtools";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +34,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <ReactQueryDevTools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   </React.StrictMode>
 );

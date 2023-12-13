@@ -4,16 +4,16 @@ import { useQuery } from "react-query";
 
 //fetch function
 const fetchedUsers = () => {
-  return axios.get("http://localhost:4000/users");
+  return axios.get("http://localhost:4000/ers"); // altered api endpoint
 };
 const RQFetch = () => {
-  const { isLoading, isError, data } = useQuery("users", fetchedUsers);
+  const { isLoading, error, isError, data } = useQuery("users", fetchedUsers);
   if (isLoading) {
     return <span>Loading...</span>;
   }
 
   if (isError) {
-    return <p>Error loading data</p>;
+    return <p>Error loading data :${error.message}</p>;
   }
 
   return (
