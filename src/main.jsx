@@ -6,7 +6,8 @@ import "./index.css";
 import Root from "./routes/root.jsx";
 import ErrorPage from "./error-page.jsx";
 import RQFetch from "./components/RQFetch.jsx";
-import Home from "../src/components/Home.jsx";
+import Home from "./components/Home.jsx";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";

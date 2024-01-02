@@ -14,26 +14,6 @@
       "id": 3,
       "name": "Wonderful Ikeche",
       "location": "Lagos, Nigeria"
-    },
-    {
-      "id": 4,
-      "name": "Cynthia Desmond",
-      "location": "Nairobi, Kenya"
-    },
-    {
-      "user": "Precious ",
-      "location": "Aryettey",
-      "id": 5
-    },
-    {
-      "fullName": "Josephine Fordjour",
-      "location": "Accra, Ghana",
-      "id": 6
-    },
-    {
-      "name": "Timothy Beko",
-      "location": "Accra, Ghana",
-      "id": 7
     }
   ]
 }
