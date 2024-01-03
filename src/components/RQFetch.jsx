@@ -11,6 +11,8 @@ const RQFetch = () => {
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["users"],
     queryFn: fetchedUsers,
+    //refetchOnMount: false,
+    //refetchOnWindowFocus: true,
   });
   if (isLoading) {
     return <h3>Loading data ... </h3>;
