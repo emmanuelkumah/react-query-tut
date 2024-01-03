@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
@@ -6,39 +6,37 @@ import { useQuery } from "@tanstack/react-query";
 const fetchedUsers = () => {
   return axios.get("http://localhost:4000/users");
 };
+
 const RQFetch = () => {
-  const { isLoading, error, isError, isFetching, data, refetch } = useQuery({
+  const { data, isError, isLoading, error } = useQuery({
     queryKey: ["users"],
     queryFn: fetchedUsers,
-    // refetchOnWindowFocus: true, //fetch data when window focus
-    enabled: false, // disable fetching data automatically
+    //refetchOnMount: false,
+    //refetchOnWindowFocus: true,
   });
-
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <h3>Loading data ... </h3>;
   }
 
   if (isError) {
-    return <p>Error loading data :${error.message}</p>;
+    return <h3>`Error loading data ${error.message}`</h3>;
   }
-  if (isFetching) {
-    return <p>Refetching data in the background...</p>;
-  }
-
   return (
-    <section className="userContainer">
-      <h3>Display Users</h3>
-      {/* Fetch data on button click */}
-      <button onClick={refetch}>Fetch Data</button>
-      <ul className="users">
-        {data?.data.map((user) => (
-          <li key={user.id}>
-            <h4>{user.name}</h4>
-            <p>{user.location}</p>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <section className="userContainer">
+        <h3>Display Users</h3>
+        <ul>
+          {data.data.map((user) => {
+            return (
+              <li key={user.id}>
+                <h4>{user.name}</h4>
+                <p>{user.location}</p>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </>
   );
 };
 
