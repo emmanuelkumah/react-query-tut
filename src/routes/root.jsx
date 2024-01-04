@@ -15,6 +15,9 @@ const Root = () => {
           <li>
             <Link to="/users">Users</Link>
           </li>
+          <li>
+            <Link to="/form">Add User</Link>
+          </li>
         </ul>
       </nav>
       <div id="detail">

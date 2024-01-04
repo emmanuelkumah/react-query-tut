@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 
 //fetch function
 const fetchedUsers = () => {
@@ -14,6 +14,14 @@ const RQFetch = () => {
     //refetchOnMount: false,
     //refetchOnWindowFocus: true,
   });
+
+  //mutating data
+  const mutation = useMutation({
+    mutationFn: (newUser) => {
+      axios.post("/users", newUser);
+    },
+  });
+
   if (isLoading) {
     return <h3>Loading data ... </h3>;
   }
