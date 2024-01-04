@@ -11,6 +11,7 @@ import Home from "./components/Home.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import AddUser from "./components/AddUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <RQFetch />,
+      },
+      {
+        path: "/form",
+        element: <AddUser />,
       },
     ],
   },
