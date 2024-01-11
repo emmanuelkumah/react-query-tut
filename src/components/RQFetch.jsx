@@ -1,25 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-//fetch function
-const fetchedUsers = () => {
+//fetch users from server
+const fetchUsers = () => {
   return axios.get("http://localhost:4000/users");
+};
+
+//Delete User from server
+const deleteUser = (id) => {
+  return axios.delete(`http://localhost:4000/users/${id}`);
 };
 
 const RQFetch = () => {
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["users"],
-    queryFn: fetchedUsers,
-    //refetchOnMount: false,
-    //refetchOnWindowFocus: true,
+    queryFn: fetchUsers,
   });
 
+  //create instance of query client
+  const queryClient = useQueryClient();
+
   //mutating data
-  const mutation = useMutation({
-    mutationFn: (newUser) => {
-      axios.post("/users", newUser);
-    },
+  const { mutate } = useMutation({
+    mutationFn: deleteUser,
   });
 
   if (isLoading) {
@@ -29,6 +33,14 @@ const RQFetch = () => {
   if (isError) {
     return <h3>`Error loading data ${error.message}`</h3>;
   }
+
+  //handle user delete on button click
+  const handleUserDelete = (userID) => {
+    //delete user from the server
+    mutate(userID);
+    //invalidate query and refetch fresh data
+    queryClient.invalidateQueries({ queryKey: ["users"] });
+  };
   return (
     <>
       <section className="userContainer">
@@ -39,6 +51,9 @@ const RQFetch = () => {
               <li key={user.id}>
                 <h4>{user.name}</h4>
                 <p>{user.location}</p>
+                <button onClick={() => handleUserDelete(user.id)}>
+                  Delete User
+                </button>
               </li>
             );
           })}

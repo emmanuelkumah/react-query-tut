@@ -9,7 +9,6 @@ import RQFetch from "./components/RQFetch.jsx";
 import Home from "./components/Home.jsx";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AddUser from "./components/AddUser.jsx";
 
